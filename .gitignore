@@ -8,3 +8,16 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Tool caches
+.pytest_cache/
+.ruff_cache/
+
+# OS / editor junk
+.DS_Store
+.idea/
+
+# Project: local data + secrets
+.env
+data/
+*.duckdb

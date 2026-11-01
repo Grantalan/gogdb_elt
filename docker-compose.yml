@@ -1,0 +1,31 @@
+# Local S3-compatible object storage (RustFS): the raw landing zone for GOG DB data.
+#   docker compose up -d
+#
+#   - S3 API endpoint  ->  http://localhost:9020   (boto3 points here)
+#   - Web console      ->  http://localhost:9021   (rustfsadmin / rustfsadmin)
+#
+# Host ports 9020/9021 because 9000/9001 (week-3) and 9010/9011 (EDGAR) are taken.
+services:
+  rustfs:
+    image: rustfs/rustfs:1.0.0-beta.8
+    container_name: gogdb_rustfs
+    ports:
+      - "9020:9000" # S3 API
+      - "9021:9001" # Web console
+    environment:
+      RUSTFS_ACCESS_KEY: ${S3_ACCESS_KEY:-rustfsadmin}
+      RUSTFS_SECRET_KEY: ${S3_SECRET_KEY:-rustfsadmin}
+      RUSTFS_CONSOLE_ENABLE: "true"
+    volumes:
+      - gogdb_rustfs_data:/data
+    command: ["/data"]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-s", "-o", "/dev/null", "http://127.0.0.1:9000/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  gogdb_rustfs_data:
