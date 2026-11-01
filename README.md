@@ -7,13 +7,12 @@
 curl -O https://www.gogdb.org/backups_v3/products/2026-10/gogdb_2026-10-31.tar.xz
 tar -xf gogdb_2026-10-31.tar.xz
 ```
+**Must have [`uv`](https://docs.astral.sh/uv/) and [`Docker`](https://docs.docker.com/desktop/setup/install/windows-install/) installed.**
 
 * Fetch data from source
 * Set up docker image YAML
 * Configure httpx and botoS3 client
 * Land data in RustFS
-
-**Must have [`uv`](https://docs.astral.sh/uv/) and [`Docker`](https://docs.docker.com/desktop/setup/install/windows-install/) installed.**
 
 ### Documentation:
 > [RustFS](https://docs.rustfs.com/) ·
