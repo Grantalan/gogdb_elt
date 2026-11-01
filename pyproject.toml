@@ -3,9 +3,27 @@ name = "gogdb-pipeline"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
+authors = [
+    { name = "Grant Alan", email = "Grantmodels.ai@gmail.com" }
+]
 requires-python = ">=3.13"
 dependencies = [
+    "boto3>=1.43.123",
+    "httpx>=0.28.1",
     "polars>=2.1.0",
     "python-dotenv>=1.2.4",
-    "requests>=2.34.2",
+    "tenacity>=9.2.1",
+]
+
+[project.scripts]
+gogdb-pipeline = "gogdb_pipeline:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.3",
 ]
