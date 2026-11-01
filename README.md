@@ -2,10 +2,10 @@
 
 Source: https://www.gogdb.org/
 
-### GOGDB - Database Bulk Download
+### GOGDB - Database Bulk Download (10-31-26)
 ```angular2html
-curl -O https://www.gogdb.org/backups_v3/products/2026-10/gogdb_2026-10-31.tar.xz
-tar -xf gogdb_2026-10-31.tar.xz
+curl --create-dirs --output-dir data/sample -O https://www.gogdb.org/backups_v3/products/2026-10/gogdb_2026-10-31.tar.xz
+tar -xf data/sample/gogdb_2026-10-31.tar.xz -C data/sample
 ```
 * Fetch data from source.
 * Set up docker image YAML.
