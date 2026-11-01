@@ -13,7 +13,7 @@ tar -xf gogdb_2026-10-31.tar.xz
 * Configure httpx and botoS3 client
 * Land data in RustFS
 
->**Must have [`uv`](https://docs.astral.sh/uv/) and [`Docker`](https://docs.docker.com/desktop/setup/install/windows-install/) installed.**
+**Must have [`uv`](https://docs.astral.sh/uv/) and [`Docker`](https://docs.docker.com/desktop/setup/install/windows-install/) installed.**
 
 ### Documentation:
 > [RustFS](https://docs.rustfs.com/) ·
