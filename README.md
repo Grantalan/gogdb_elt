@@ -2,12 +2,10 @@
 
 >Source: https://www.gogdb.org/
 
-### GOGDB - Database Bulk Download (~1.1 GB)
+### GOGDB - Bulk Download (~1.1 GB)
 ```bash
-rm -rf data/sample/products # Delete existing data - directory
-mkdir -p data/sample # Make sure data/sample exists
-LATEST=$(curl -s https://www.gogdb.org/backups_v3/products/filelist.txt | tail -1) # Create variable for most recent data dump
-curl -s "https://www.gogdb.org/backups_v3/products/$LATEST" | tar -xJ -C data/sample # Save most up to data tar.xz sample on disk
+mkdir -p data/sample && rm -rf data/sample/products
+curl -s https://www.gogdb.org/backups_v3/products/$(curl -s https://www.gogdb.org/backups_v3/products/filelist.txt | tail -1) | tar -xJ -C data/sample
 ```
 
 * Fetch data from source
@@ -16,6 +14,18 @@ curl -s "https://www.gogdb.org/backups_v3/products/$LATEST" | tar -xJ -C data/sa
 * Land data in RustFS
 
 >**Must have [`uv`](https://docs.astral.sh/uv/) and [`Docker`](https://docs.docker.com/desktop/setup/install/windows-install/) installed.**
+
+### Run the pipeline
+1. `cp .env.example .env` fill in variables:
+   - `API_BASE_URL=https://www.gogdb.org`
+   - `S3_ENDPOINT_URL=http://localhost:9020`
+   - `S3_ACCESS_KEY=`: choose password
+   - `S3_SECRET_KEY=`: choose password
+   - `S3_REGION=us-east-1` 
+   - `S3_BUCKET=gogdb-raw`
+2. `docker compose up -d`
+3. `uv sync`
+4. `uv run gogdb-pipeline`
 
 ### Documentation:
 > [RustFS](https://docs.rustfs.com/) ·
