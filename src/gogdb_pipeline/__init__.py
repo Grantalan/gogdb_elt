@@ -1,2 +1,1 @@
-def main() -> None:
-    print("Hello from gogdb-pipeline!")
+"""GOG DB data engineering pipeline: GOG DB backup -> RustFS."""
