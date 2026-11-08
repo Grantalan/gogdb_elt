@@ -13,6 +13,8 @@ prices.json | 13,610
 prices_pre2019.json | 5,830 (3,060 of them empty)
 builds/*.json | 71,948
 
+The tables and how they relate are drawn in the [entity relationship diagram](erd.md).
+
 >Nested fields are written as `parent.child`. 
 ## product.json
 
