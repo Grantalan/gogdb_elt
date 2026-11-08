@@ -2,10 +2,12 @@
 
 >Source: https://www.gogdb.org/
 
-### GOGDB - Database Bulk Download (10-31-26)
-```angular2html
-curl --create-dirs --output-dir data/sample -O https://www.gogdb.org/backups_v3/products/2026-10/gogdb_2026-10-31.tar.xz
-tar -xf data/sample/gogdb_2026-10-31.tar.xz -C data/sample
+### GOGDB - Database Bulk Download (~1.1 GB)
+```bash
+rm -rf data/sample/products # Delete existing data - directory
+mkdir -p data/sample # Make sure data/sample exists
+LATEST=$(curl -s https://www.gogdb.org/backups_v3/products/filelist.txt | tail -1) # Create variable for most recent data dump
+curl -s "https://www.gogdb.org/backups_v3/products/$LATEST" | tar -xJ -C data/sample # Save most up to data tar.xz sample on disk
 ```
 
 * Fetch data from source
