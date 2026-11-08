@@ -23,5 +23,12 @@ def extract() -> None:
             return
 
         data: bytes = http.get(f"{BACKUPS}/{latest}").raise_for_status().content
-        s3.put_object(Bucket=S3_BUCKET, Key=key, Body=data)
+        # Label the object as an xz-compressed tar so it stays recognizable.
+        s3.put_object(
+            Bucket=S3_BUCKET,
+            Key=key,
+            Body=data,
+            ContentType="application/x-tar",
+            ContentEncoding="xz",
+        )
         print(f"Landed {key} ({len(data) / 1e6:.0f} MB)")
