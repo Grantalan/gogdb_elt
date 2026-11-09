@@ -7,7 +7,7 @@ This is the entry point for ``uv run gogdb-pipeline``:
 
 from __future__ import annotations
 
-from gogdb_pipeline import extract, load
+from elt import extract, load
 
 
 def main() -> None:

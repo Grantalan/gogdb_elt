@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.scripts]
-gogdb-pipeline = "gogdb_pipeline.pipeline:main"
+gogdb-pipeline = "elt.pipeline:main"
 
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
@@ -32,3 +32,7 @@ dev = [
     "pytest>=9.2.0",
     "ruff>=0.17.3",
 ]
+
+[tool.uv.build-backend]
+module-name = "elt"
+module-root = ""

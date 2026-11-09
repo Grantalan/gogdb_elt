@@ -16,7 +16,7 @@ import httpx
 from botocore.client import BaseClient
 from botocore.exceptions import ClientError
 
-from gogdb_pipeline.config import S3_BUCKET, get_http_client, get_s3_client
+from elt.config import S3_BUCKET, get_http_client, get_s3_client
 
 BACKUPS = "/backups_v3/products"
 
@@ -68,5 +68,5 @@ def extract() -> str:
 
 
 if __name__ == "__main__":
-    # uv run python -m gogdb_pipeline.extract
+    # uv run python -m elt.extract
     extract()
