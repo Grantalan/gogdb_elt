@@ -16,7 +16,7 @@ from pathlib import Path
 
 import duckdb
 
-from gogdb_pipeline.config import S3_BUCKET, get_s3_client
+from elt.config import S3_BUCKET, get_s3_client
 
 # The DuckDB database file the whole pipeline shares. (data/ is git-ignored.)
 DB_PATH = Path("data/gogdb.duckdb")
@@ -59,8 +59,8 @@ def load_all(con: duckdb.DuckDBPyConnection, key: str) -> dict[str, int]:
 
 
 if __name__ == "__main__":
-    # uv run python -m gogdb_pipeline.load
-    from gogdb_pipeline.extract import extract
+    # uv run python -m elt.load
+    from elt.extract import extract
 
     con = connect()
     print("loaded:", load_all(con, extract()))

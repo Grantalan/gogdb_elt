@@ -1,4 +1,4 @@
-## GOG ETL Pipeline
+## GOG ELT Pipeline
 
 Source: https://www.gogdb.org/
 
